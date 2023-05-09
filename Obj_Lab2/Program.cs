@@ -6,29 +6,34 @@ namespace Obj_Lab2
     {
         static void Main(string[] args)
         {
-            double x0, xk, xd, a, B;
-            double x, M;
-            int i = 0;
+            double x, a;
+            double M = 0;
+            int i = 0, n;
+            int k = 2, K = 1, I = 1;
 
-            Console.WriteLine("Введите число первое число x: ");
-            x0 = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Введите число последнее число x: ");
-            xk = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Введите шаг: ");
-            xd = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите число x: ");
+            x = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Введите число число a: ");
             a = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Введите число число B: ");
-            B = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введите длину ряда: ");
+            n = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\nОтветы: ");
 
-            x = x0;
 
-            while (x < xk)
+            while (i < n)
             {
                 i++;
-                x = x + xd;
-                M = 2.48 + Math.Cos(Math.Sin(B)) / Math.Pow(Math.E, a - B) + Math.Pow(x, 3);
+                if (i == 1)
+                {
+                    M = Math.Pow(x, k) + Math.Pow(a, K) / Math.Pow(Math.Sin(a + x), I);
+                }
+                else 
+                {
+                    k += 1;
+                    K *= 2;
+                    I += 1;
+                    M += Math.Pow(x, k) + Math.Pow(a, K) / Math.Pow(Math.Sin(a + x), I);
+                }
                 Console.WriteLine(Convert.ToString(i) + ": " + M);
             }
 
